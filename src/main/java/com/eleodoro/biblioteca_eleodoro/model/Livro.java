@@ -102,31 +102,7 @@ public class Livro {
     public void buscarLivro(){
         
     }
-    public void validarISBN() {
-
-    }
-
-    public void cadastrarLivro(){
-
-    }
-    
-    public void alterarLivro(){
-
-    }
-    
-    public void consultarISBN(){
-
-    }
-    
-    public void deletarLivro(){
-
-    }
-    
-    public void buscarLivro(){
-        
-    }
-
-
+ 
     @Override
     public String toString() {
         return "Livro [nome=" + nome + ", genero=" + genero + ", anoPublicacao=" + anoPublicacao + ", isbn=" + isbn
