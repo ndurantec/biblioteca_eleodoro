@@ -13,6 +13,7 @@ public class Aluno {
 
     public Aluno() {
     }
+
     public Aluno(String nome, String endereco, String email, int cgm, String telefone, LocalDateTime dataNascimento) {
         this.nome = nome;
         this.endereco = endereco;
@@ -21,39 +22,51 @@ public class Aluno {
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public String getEndereco() {
         return endereco;
     }
+
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public int getCgm() {
         return cgm;
     }
+
     public void setCgm(int cgm) {
         this.cgm = cgm;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public LocalDateTime getDataNascimento() {
         return dataNascimento;
     }
+
     public void setDataNascimento(LocalDateTime dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
@@ -77,6 +90,7 @@ public class Aluno {
         return "Aluno [nome=" + nome + ", endereco=" + endereco + ", email=" + email + ", cgm=" + cgm + ", telefone="
                 + telefone + ", dataNascimento=" + dataNascimento + "]";
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -89,6 +103,7 @@ public class Aluno {
         result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
         return result;
     }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
