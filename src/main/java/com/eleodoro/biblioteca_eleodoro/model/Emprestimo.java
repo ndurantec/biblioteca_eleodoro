@@ -8,8 +8,10 @@ public class Emprestimo {
     private String isbnLivro;
     private LocalDateTime dataEmprestimo;
     private LocalDateTime dataEntrega;
+
     public Emprestimo() {
     }
+    
     public Emprestimo(int cgmAluno, String isbnLivro, LocalDateTime dataEmprestimo, LocalDateTime dataEntrega) {
         this.cgmAluno = cgmAluno;
         this.isbnLivro = isbnLivro;
