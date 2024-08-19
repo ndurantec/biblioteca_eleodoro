@@ -1,8 +1,23 @@
 package com.eleodoro.biblioteca_eleodoro.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Emprestimo {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+
+public class Emprestimo implements  Serializable {
+
+    private static final Long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     
     private int cgmAluno;
     private String isbnLivro;
@@ -17,6 +32,18 @@ public class Emprestimo {
         this.isbnLivro = isbnLivro;
         this.dataEmprestimo = dataEmprestimo;
         this.dataEntrega = dataEntrega;
+    }
+
+    public static Long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getCgmAluno() {
@@ -105,6 +132,5 @@ public class Emprestimo {
         return true;
     }
 
-    
-    
 }
+
