@@ -1,9 +1,25 @@
 package com.eleodoro.biblioteca_eleodoro.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Aluno {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
+@Entity
+public class Aluno implements Serializable{
+
+    private static final Long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
+
+
     private String nome;
     private String endereco;
     private String email;
@@ -22,6 +38,25 @@ public class Aluno {
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
     }
+
+
+
+
+    public static Long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
+
 
     public String getNome() {
         return nome;
@@ -142,5 +177,4 @@ public class Aluno {
             return false;
         return true;
     }
-
 }
