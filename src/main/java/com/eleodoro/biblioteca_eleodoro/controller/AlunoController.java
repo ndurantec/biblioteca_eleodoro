@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/aluno")
 public class AlunoController {
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/imprimir")
     public void imprimir(){
         System.out.println("Cheguei até aqui");
     }
