@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/emprestimo")
 public class EmprestimoController {
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/imprimir")
     public void imprimir(){
         System.out.println("Cheguei até aqui 2");
     }
