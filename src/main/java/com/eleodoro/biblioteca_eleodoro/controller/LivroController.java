@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LivroController {
 
     @GetMapping(value = "/imprimir")
-    public void imprimir(){
-        System.out.println("Cheguei até aqui 3");
+    public String imprimir(){
+        return "Cheguei até aqui 3";
     }
-    
 }

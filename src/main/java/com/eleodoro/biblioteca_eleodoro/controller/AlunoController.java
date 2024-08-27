@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AlunoController {
 
     @GetMapping(value = "/imprimir")
-    public void imprimir(){
-        System.out.println("Cheguei até aqui");
+    public String imprimir(){
+        return "Cheguei até aqui";
     }
-    
 }
