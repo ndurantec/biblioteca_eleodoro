@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-
 @Entity
 public class Aluno implements Serializable{
 
@@ -17,8 +16,6 @@ public class Aluno implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    
     private String nome;
     private String endereco;
     private String email;
@@ -38,9 +35,6 @@ public class Aluno implements Serializable{
         this.dataNascimento = dataNascimento;
     }
 
-
-
-
     public static Long getSerialversionuid() {
         return serialVersionUID;
     }
@@ -52,10 +46,6 @@ public class Aluno implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-
-
-
-
 
     public String getNome() {
         return nome;
@@ -117,7 +107,6 @@ public class Aluno implements Serializable{
     public void incluirAluno(String nome, String endereco,String email, int cgm, String telefone, LocalDateTime dataNascimento){
 
     }
-
 
     @Override
     public String toString() {

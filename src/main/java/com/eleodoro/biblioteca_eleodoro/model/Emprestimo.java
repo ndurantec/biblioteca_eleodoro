@@ -17,8 +17,6 @@ public class Emprestimo implements  Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    
     private int cgmAluno;
     private String isbnLivro;
     private LocalDateTime dataEmprestimo;
@@ -85,7 +83,6 @@ public class Emprestimo implements  Serializable {
         
     }
 
-
     @Override
     public String toString() {
         return "Emprestimo [cgmAluno=" + cgmAluno + ", isbnLivro=" + isbnLivro + ", dataEmprestimo=" + dataEmprestimo
@@ -131,6 +128,5 @@ public class Emprestimo implements  Serializable {
             return false;
         return true;
     }
-
 }
 

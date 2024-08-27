@@ -8,23 +8,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-
-public class Autor implements Serializable {
+public class Login implements Serializable{
 
     private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private int idade;
-    
-    public Autor() {
+    private String nomeUser;
+    private String senha;
+
+    public Login() {
     }
 
-    public Autor(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
+    public Login(String nomeUser, String senha) {
+        this.nomeUser = nomeUser;
+        this.senha = senha;
     }
 
     public static Long getSerialversionuid() {
@@ -39,41 +38,41 @@ public class Autor implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeUser() {
+        return nomeUser;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeUser(String nomeUser) {
+        this.nomeUser = nomeUser;
     }
 
-    public int getIdade() {
-        return idade;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public void validarNome(){
 
     }
 
-    public void validarIdade(){
-
+    public void validarSenha(){
+        
     }
 
     @Override
     public String toString() {
-        return "Autor [nome=" + nome + ", idade=" + idade + "]";
+        return "Login [nomeUser=" + nomeUser + ", senha=" + senha + "]";
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-        result = prime * result + idade;
+        result = prime * result + ((nomeUser == null) ? 0 : nomeUser.hashCode());
+        result = prime * result + ((senha == null) ? 0 : senha.hashCode());
         return result;
     }
 
@@ -85,13 +84,16 @@ public class Autor implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Autor other = (Autor) obj;
-        if (nome == null) {
-            if (other.nome != null)
+        Login other = (Login) obj;
+        if (nomeUser == null) {
+            if (other.nomeUser != null)
                 return false;
-        } else if (!nome.equals(other.nome))
+        } else if (!nomeUser.equals(other.nomeUser))
             return false;
-        if (idade != other.idade)
+        if (senha == null) {
+            if (other.senha != null)
+                return false;
+        } else if (!senha.equals(other.senha))
             return false;
         return true;
     }

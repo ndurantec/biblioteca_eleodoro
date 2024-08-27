@@ -7,8 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-
-
 @Entity
 public class Livro implements Serializable{
 
@@ -17,10 +15,6 @@ public class Livro implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    
-
-    
     private String nome;
     private String genero;
     private int anoPublicacao;
@@ -43,7 +37,6 @@ public class Livro implements Serializable{
         this.autor = autor;
     }
 
-
     public static Long getSerialversionuid() {
         return serialVersionUID;
     }
@@ -55,10 +48,6 @@ public class Livro implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-
-
-
-
 
     public String getNome() {
         return nome;
@@ -115,6 +104,7 @@ public class Livro implements Serializable{
     public void setAutor(String autor) {
         this.autor = autor;
     }
+    
     public void validarISBN() {
 
     }
