@@ -14,4 +14,23 @@ public class EmprestimoController {
     public String imprimir(){
         return "Cheguei até aqui 2";
     }
+
+    @PostMapping(value = "/insert")
+    public ResponseEntity<emprestimo> insert (@RequestBody emprestimoDTO emprestimoDTO) {
+
+        Emprestimo novoEmprestimo = emprestimoDTO.novoEmprestimo();
+        EmprestimoRepository.save(novoemprestimo);
+
+        System.out.println(x:"Chegou no método insert");
+        System.out println(emprestimoDTO.toString());
+
+        URI uri = ServletUriComponentBuilder.fromCurrentRequest()
+            .path(path:"{id}")
+            .buildAndExpand(novoEmprestimo.getId())
+            .toUri();
+
+        return ResponseEntity.created(uri).body(novoEmprestimo);
+    }
+
+
 }
