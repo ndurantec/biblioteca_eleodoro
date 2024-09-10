@@ -10,6 +10,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/emprestimo")
 public class EmprestimoController {
 
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Emprestimo emprestimo) {
+
+        Optional<Emprestimo> emprestimoBanco = emprestimoRepository.findById(id);
+
+        Emprestimo emprestimoModificado = emprestimoBanco.get();
+
+        emprestimoModificado.setNome(emprestimo.getNome())
+
+        emprestimoRepository.save(emprestimoModificado);
+
+        return ResponseEntity.noContent().build();
+
+
+
     @GetMapping(value = "/imprimir")
     public String imprimir(){
         return "Cheguei até aqui 2";
@@ -19,7 +35,7 @@ public class EmprestimoController {
     public ResponseEntity<emprestimo> insert (@RequestBody emprestimoDTO emprestimoDTO) {
 
         Emprestimo novoEmprestimo = emprestimoDTO.novoEmprestimo();
-        EmprestimoRepository.save(novoemprestimo);
+        emprestimoRepository.save(novoemprestimo);
 
         System.out.println(x:"Chegou no método insert");
         System.out println(emprestimoDTO.toString());
@@ -30,6 +46,7 @@ public class EmprestimoController {
             .toUri();
 
         return ResponseEntity.created(uri).body(novoEmprestimo);
+    }
     }
 
 
