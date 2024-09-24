@@ -1,7 +1,8 @@
 package com.eleodoro.biblioteca_eleodoro.dto;
 
 import java.time.LocalDateTime;
-import com.eleodoro.biblioteca_eleodoro.Emprestimo;
+
+import com.eleodoro.biblioteca_eleodoro.model.Emprestimo;
 
 public class EmprestimoDTO {
     
@@ -48,7 +49,7 @@ public class EmprestimoDTO {
     }
 
     public Emprestimo novoEmprestimo() {
-        return new Emprestimo(int cgmAluno, String isbnLivro, LocalDateTime dataEmprestimo, LocalDateTime dataEntrega);
+        return new Emprestimo (int cgmAluno; String isbnLivro; LocalDateTime dataEmprestimo; LocalDateTime dataEntrega);
     }
     
 }
