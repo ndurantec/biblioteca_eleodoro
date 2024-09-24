@@ -49,7 +49,7 @@ public class EmprestimoDTO {
     }
 
     public Emprestimo novoEmprestimo() {
-        return new Emprestimo (int cgmAluno; String isbnLivro; LocalDateTime dataEmprestimo; LocalDateTime dataEntrega);
+        return new Emprestimo(cgmAluno, isbnLivro, dataEmprestimo, dataEntrega);
     }
     
 }
