@@ -6,16 +6,30 @@ import com.eleodoro.biblioteca_eleodoro.model.Emprestimo;
 
 public class EmprestimoDTO {
     
+    private Long id;
     private int cgmAluno;
     private String isbnLivro;
     private LocalDateTime dataEmprestimo;
     private LocalDateTime dataEntrega;
-
+    
     public EmprestimoDTO() {
     }
+    
+    public EmprestimoDTO(int cgmAluno, String isbnLivro, LocalDateTime dataEmprestimo, LocalDateTime dataEntrega) {
+        this.cgmAluno = cgmAluno;
+        this.isbnLivro = isbnLivro;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataEntrega = dataEntrega;
+    }
 
+    public Long getId() {
+        return id;
+    }
 
-
+    public void setId(Long id) {
+        this.id = id;
+    }
+        
     public int getCgmAluno() {
         return cgmAluno;
     }
