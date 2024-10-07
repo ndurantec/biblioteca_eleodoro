@@ -1,5 +1,7 @@
 package com.eleodoro.biblioteca_eleodoro.dto;
 
+import com.eleodoro.biblioteca_eleodoro.model.Livro;
+
 public class LivroDTO {
 
     private String nome;
@@ -67,6 +69,11 @@ public class LivroDTO {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public Livro novoLivro() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'novoLivro'");
     }
 
     

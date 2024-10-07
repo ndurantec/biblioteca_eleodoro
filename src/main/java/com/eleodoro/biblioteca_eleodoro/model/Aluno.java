@@ -21,8 +21,10 @@ public class Aluno implements Serializable{
     private String email;
     private int cgm;
     private String telefone;
+    //Altera para salvar somente a data de nascimento sem a hora
     private LocalDateTime dataNascimento;
 
+    
     public Aluno() {
     }
 
