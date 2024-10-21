@@ -45,6 +45,14 @@ public class LivroController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Livro livro) {
+
+        //Optional<Aluno> alunoBanco = ((Object) alunoRepository).findById(Id);
+
+        //Aluno emprestimoModificado = emprestimoBanco.get();
+
+        //emprestimoModificado.setNome(emprestimo.getNome());
+
+        //emprestimoRepository.save(emprestimoModificado);
         return ResponseEntity.noContent().build();
     }
 
