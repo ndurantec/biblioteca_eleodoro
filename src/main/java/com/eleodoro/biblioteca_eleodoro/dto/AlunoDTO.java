@@ -1,6 +1,6 @@
 package com.eleodoro.biblioteca_eleodoro.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.eleodoro.biblioteca_eleodoro.model.Aluno;
 
@@ -11,7 +11,7 @@ public class AlunoDTO {
     private String email;
     private int cgm;
     private String telefone;
-    private LocalDateTime dataNascimento;
+    private LocalDate dataNascimento;
     
     @Deprecated
     public AlunoDTO() {
@@ -57,16 +57,18 @@ public class AlunoDTO {
         this.telefone = telefone;
     }
 
-    public LocalDateTime getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
     public Aluno novoAluno() {
         return new Aluno(nome, endereco, email, cgm, telefone, dataNascimento);
     }
+
+    
 
 }

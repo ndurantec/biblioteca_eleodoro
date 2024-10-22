@@ -1,12 +1,13 @@
 package com.eleodoro.biblioteca_eleodoro.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Aluno implements Serializable{
@@ -22,13 +23,13 @@ public class Aluno implements Serializable{
     private int cgm;
     private String telefone;
     //Altera para salvar somente a data de nascimento sem a hora
-    private LocalDateTime dataNascimento;
+    private LocalDate dataNascimento;
 
     
     public Aluno() {
     }
 
-    public Aluno(String nome, String endereco, String email, int cgm, String telefone, LocalDateTime dataNascimento) {
+    public Aluno(String nome, String endereco, String email, int cgm, String telefone, LocalDate dataNascimento) {
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
@@ -89,15 +90,15 @@ public class Aluno implements Serializable{
         this.telefone = telefone;
     }
 
-    public LocalDateTime getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public void cadastrarAluno(String nome, String endereco, String email, int cmg, String telefone, LocalDateTime dataNascimento){
+    public void cadastrarAluno(String nome, String endereco, String email, int cmg, String telefone, LocalDate dataNascimento){
 
     }
 
@@ -106,7 +107,7 @@ public class Aluno implements Serializable{
     }
 
     
-    public void incluirAluno(String nome, String endereco,String email, int cgm, String telefone, LocalDateTime dataNascimento){
+    public void incluirAluno(String nome, String endereco,String email, int cgm, String telefone, LocalDate dataNascimento){
 
     }
 
@@ -167,4 +168,6 @@ public class Aluno implements Serializable{
             return false;
         return true;
     }
+
+    
 }

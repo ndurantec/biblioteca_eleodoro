@@ -2,6 +2,8 @@ package com.eleodoro.biblioteca_eleodoro.controller;
 
 import java.net.URI;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -42,16 +44,22 @@ public class AlunoController {
         return ResponseEntity.created(uri).body(novoAluno);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}")    
     public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Aluno aluno) {
 
-        //Optional<Aluno> emprestimoBanco = ((Object) alunoRepository).findById(Id);
+        Optional<Aluno> alunoBanco = alunoRepository.findById(Id);
 
-        //Aluno alunoModificado = alunoBanco.get();
+        Aluno alunoModificado = alunoBanco.get();
 
-        //alunoModificado.setNome(aluno.getNome());
+        alunoModificado.setNome(aluno.getNome());
+        alunoModificado.setEndereco(aluno.getEndereco());
+        alunoModificado.setEmail(aluno.getEmail());
+        alunoModificado.setCgm(aluno.getCgm());
+        alunoModificado.setTelefone(aluno.getTelefone());
+        alunoModificado.setDataNascimento(aluno.getDataNascimento());
+  
 
-        //alunoRepository.save(alunoModificado);
+        alunoRepository.save(alunoModificado);
 
         return ResponseEntity.noContent().build();
     }
