@@ -44,7 +44,7 @@ public class AlunoController {
         return ResponseEntity.created(uri).body(novoAluno);
     }
 
-    @PutMapping(value = "/{id}")    
+    @PutMapping("/{id}")    
     public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Aluno aluno) {
 
         Optional<Aluno> alunoBanco = alunoRepository.findById(Id);
@@ -63,6 +63,17 @@ public class AlunoController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/findByNome")
+    public ResponseEntity<Aluno> buscarContaPorNome(@RequestBody AlunoDTO alunoDto) {
+        Optional<Aluno> aluno = alunoRepository.consultarPorNome(alunoDto.getNome());
+        Aluno alunoObjeto = aluno.get();        
+        return ResponseEntity.ok().body(alunoObjeto);
+    }
+
+
+
+
 
     @GetMapping(value = "/imprimir")
     public String imprimir(){

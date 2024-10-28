@@ -6,6 +6,7 @@ import com.eleodoro.biblioteca_eleodoro.model.Aluno;
 
 public class AlunoDTO {
 
+    private Long id;
     private String nome;
     private String endereco;
     private String email;
@@ -15,6 +16,14 @@ public class AlunoDTO {
     
     @Deprecated
     public AlunoDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -68,7 +77,6 @@ public class AlunoDTO {
     public Aluno novoAluno() {
         return new Aluno(nome, endereco, email, cgm, telefone, dataNascimento);
     }
-
-    
+   
 
 }
