@@ -2,9 +2,11 @@ package com.eleodoro.biblioteca_eleodoro.controller;
 
 import java.net.URI;
 
+import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.eleodoro.biblioteca_eleodoro.dto.LivroDTO;
+import com.eleodoro.biblioteca_eleodoro.model.Aluno;
 import com.eleodoro.biblioteca_eleodoro.model.Livro;
 import com.eleodoro.biblioteca_eleodoro.repository.LivroRepository;
 
@@ -46,15 +49,35 @@ public class LivroController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Livro livro) {
 
-        //Optional<Aluno> alunoBanco = ((Object) alunoRepository).findById(Id);
+        //Optional<Livro> livroBanco = ((Object) livroRepository).findById(Id);
 
-        //Aluno emprestimoModificado = emprestimoBanco.get();
+        //Aluno livroModificado = livroBanco.get();
 
-        //emprestimoModificado.setNome(emprestimo.getNome());
+        //livroModificado.setNome(livro.getNome());
 
-        //emprestimoRepository.save(emprestimoModificado);
+        //livroRepository.save(livroModificado);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value = "/{id}")
+    ResponseEntity<Livro> buscarPorId(@PathVariable Long id) {
+      return (ResponseEntity<Livro>) livroRepository.findById(id)
+          .map(registro -> ResponseEntity.ok().body(registro))
+          .orElse(ResponseEntity.notFound().build());
+    }
+
+
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<String> deleteLivro(@PathVariable Long id) {
+    // Optional<Livro> livroBanco = livroRepository.findById(id);
+
+    //     if (livroBanco.isPresent()) {
+    //         livroRepository.delete(livroBanco.get());
+    //         return ResponseEntity.ok("Livro with nome " + id + " deleted.");
+    //     }
+    
+    //     return ResponseEntity.notFound().build();
+    // }
 
     @GetMapping(value = "/imprimir")
     public String imprimir(){

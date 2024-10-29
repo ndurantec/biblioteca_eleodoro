@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,15 +65,25 @@ public class AlunoController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/findByNome")
-    public ResponseEntity<Aluno> buscarContaPorNome(@RequestBody AlunoDTO alunoDto) {
-        Optional<Aluno> aluno = alunoRepository.consultarPorNome(alunoDto.getNome());
-        Aluno alunoObjeto = aluno.get();        
-        return ResponseEntity.ok().body(alunoObjeto);
+    @PostMapping("/findByNome")
+    public ResponseEntity<Aluno> buscarAlunoPorNome(@RequestBody AlunoDTO alunoDto) {
+        // Optional<Aluno> aluno = alunoRepository.consultarPorNome(alunoDto.getNome());
+        Aluno alunoBanco = alunoRepository.consultarPorNome(alunoDto.getNome());
+        //Aluno alunoObjeto = aluno.get();        
+        return ResponseEntity.ok().body(alunoBanco);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAluno(@PathVariable Long id) {
+    Optional<Aluno> alunoBanco = alunoRepository.findById(id);
 
-
+        if (alunoBanco.isPresent()) {
+            alunoRepository.delete(alunoBanco.get());
+            return ResponseEntity.ok("Aluno with nome " + id + " deleted.");
+        }
+    
+        return ResponseEntity.notFound().build();
+    }
 
 
     @GetMapping(value = "/imprimir")
