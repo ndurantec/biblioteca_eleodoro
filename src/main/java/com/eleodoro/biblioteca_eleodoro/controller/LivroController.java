@@ -1,10 +1,12 @@
 package com.eleodoro.biblioteca_eleodoro.controller;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,13 +48,13 @@ public class LivroController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Livro livro) {
 
-        //Optional<Livro> livroBanco = ((Object) livroRepository).findById(Id);
+        Optional<Livro> livroBanco = livroRepository.findById(Id);
 
-        //Aluno livroModificado = livroBanco.get();
+        Livro livroModificado = livroBanco.get();
 
-        //livroModificado.setNome(livro.getNome());
+        livroModificado.setNome(livro.getNome());
 
-        //livroRepository.save(livroModificado);
+        livroRepository.save(livroModificado);
         return ResponseEntity.noContent().build();
     }
 
@@ -64,17 +66,17 @@ public class LivroController {
     }
 
 
-    // @DeleteMapping("/{id}")
-    // public ResponseEntity<String> deleteLivro(@PathVariable Long id) {
-    // Optional<Livro> livroBanco = livroRepository.findById(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteLivro(@PathVariable Long id) {
+    Optional<Livro> livroBanco = livroRepository.findById(id);
 
-    //     if (livroBanco.isPresent()) {
-    //         livroRepository.delete(livroBanco.get());
-    //         return ResponseEntity.ok("Livro with nome " + id + " deleted.");
-    //     }
+        if (livroBanco.isPresent()) {
+            livroRepository.delete(livroBanco.get());
+            return ResponseEntity.ok("Id: " + id + " removido do Banco de dados.");
+        }
     
-    //     return ResponseEntity.notFound().build();
-    // }
+        return ResponseEntity.notFound().build();
+    }
 
     @GetMapping(value = "/imprimir")
     public String imprimir(){
