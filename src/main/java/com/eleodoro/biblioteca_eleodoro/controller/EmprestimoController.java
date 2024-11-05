@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.eleodoro.biblioteca_eleodoro.dto.AlunoDTO;
 import com.eleodoro.biblioteca_eleodoro.dto.EmprestimoDTO;
+import com.eleodoro.biblioteca_eleodoro.model.Aluno;
 import com.eleodoro.biblioteca_eleodoro.model.Emprestimo;
+import com.eleodoro.biblioteca_eleodoro.model.Livro;
 import com.eleodoro.biblioteca_eleodoro.repository.EmprestimoRepository;
 
 @RestController
@@ -61,6 +64,13 @@ public class EmprestimoController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/findByNome")
+    public ResponseEntity<Emprestimo> buscarEmprestimoPorIsbnLivro(@RequestBody EmprestimoDTO emprestimoDto) {
+        //Optional<Emprestimo> emprestimo = emprestimoRepository.consultarPorIsbnLivro(emprestimoDto.getIsbnLivro());
+        Emprestimo emprestimoBanco = emprestimoRepository.consultarPorIsbnLivro(emprestimoDto.getIsbnLivro());
+       // Emprestimo emprestimoObjeto = emprestimo.get();        
+        return ResponseEntity.ok().body(emprestimoBanco);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteEmprestimo(@PathVariable Long id) {
@@ -73,6 +83,7 @@ public class EmprestimoController {
     
         return ResponseEntity.notFound().build();
     }
+
 
     @GetMapping(value = "/imprimir") String imprimir() {
         return "Cheguei até aqui 2";
