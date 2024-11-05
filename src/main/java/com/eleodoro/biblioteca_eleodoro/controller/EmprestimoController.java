@@ -1,10 +1,12 @@
 package com.eleodoro.biblioteca_eleodoro.controller;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,29 +50,29 @@ public class EmprestimoController {
     public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Emprestimo emprestimo) {
 
  
-        //Optional<Emprestimo> emprestimoBanco = ((Object) emprestimoRepository).findById(Id);
+    Optional<Emprestimo> emprestimoBanco = ((Object) emprestimoRepository).findById(Id);
 
-        //Emprestimo emprestimoModificado = emprestimoBanco.get();
+        Emprestimo emprestimoModificado = emprestimoBanco.get();
 
-        //emprestimoModificado.setNome(emprestimo.getNome());
+        emprestimoModificado.setNome(emprestimo.getNome());
 
-        //emprestimoRepository.save(emprestimoModificado);
+        emprestimoRepository.save(emprestimoModificado);
 
         return ResponseEntity.noContent().build();
     }
 
 
-    // @DeleteMapping("/{id}")
-    // public ResponseEntity<String> deleteEmprestimo(@PathVariable Long id) {
-    // Optional<Emprestimo> emprestimoBanco = emprestimoRepository.findById(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteEmprestimo(@PathVariable Long id) {
+    Optional<Emprestimo> emprestimoBanco = emprestimoRepository.findById(id);
 
-    //     if (emprestimoBanco.isPresent()) {
-    //         emprestimoRepository.delete(emprestimoBanco.get());
-    //         return ResponseEntity.ok("Emprestimo with nome " + id + " deleted.");
-    //     }
+        if (emprestimoBanco.isPresent()) {
+         emprestimoRepository.delete(emprestimoBanco.get());
+         return ResponseEntity.ok("Emprestimo with nome " + id + " deleted.");
+        }
     
-    //     return ResponseEntity.notFound().build();
-    // }
+        return ResponseEntity.notFound().build();
+    }
 
     @GetMapping(value = "/imprimir") String imprimir() {
         return "Cheguei até aqui 2";
