@@ -1,5 +1,6 @@
 package com.eleodoro.biblioteca_eleodoro.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.eleodoro.biblioteca_eleodoro.model.Emprestimo;
@@ -9,13 +10,13 @@ public class EmprestimoDTO {
     private Long id;
     private int cgmAluno;
     private String isbnLivro;
-    private LocalDateTime dataEmprestimo;
-    private LocalDateTime dataEntrega;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataEntrega;
     
     public EmprestimoDTO() {
     }
     
-    public EmprestimoDTO(int cgmAluno, String isbnLivro, LocalDateTime dataEmprestimo, LocalDateTime dataEntrega) {
+    public EmprestimoDTO(int cgmAluno, String isbnLivro, LocalDate dataEmprestimo, LocalDate dataEntrega) {
         this.cgmAluno = cgmAluno;
         this.isbnLivro = isbnLivro;
         this.dataEmprestimo = dataEmprestimo;
@@ -45,20 +46,20 @@ public class EmprestimoDTO {
     public void setIsbnLivro(String isbnLivro) {
         this.isbnLivro = isbnLivro;
     }
-
-    public LocalDateTime getDataEmprestimo() {
+      
+    public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
-
-    public void setDataEmprestimo(LocalDateTime dataEmprestimo) {
+    
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
-
-    public LocalDateTime getDataEntrega() {
+    
+    public LocalDate getDataEntrega() {
         return dataEntrega;
     }
-
-    public void setDataEntrega(LocalDateTime dataEntrega) {
+    
+    public void setDataEntrega(LocalDate dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 

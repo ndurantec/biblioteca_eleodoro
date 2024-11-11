@@ -50,25 +50,28 @@ public class EmprestimoController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Void> update(@PathVariable Long Id, @RequestBody Emprestimo emprestimo) {
+    public ResponseEntity<Emprestimo> update(@PathVariable Long id, @RequestBody EmprestimoDTO emprestimoDto) {
 
  
-    Optional<Emprestimo> emprestimoBanco = ((Object) emprestimoRepository).findById(Id);
+        Optional<Emprestimo> emprestimoBanco = emprestimoRepository.findById(id);
 
-        Emprestimo emprestimoModificado = emprestimoBanco.get();
+        Emprestimo emprestimoObjeto = emprestimoBanco.get();
 
-        emprestimoModificado.setNome(emprestimo.getNome());
+        emprestimoObjeto.setCgmAluno(emprestimoDto.getCgmAluno());
+        emprestimoObjeto.setIsbnLivro(emprestimoDto.getIsbnLivro());
+        emprestimoObjeto.setDataEmprestimo(emprestimoDto.getDataEmprestimo());
+        emprestimoObjeto.setDataEntrega(emprestimoDto.getDataEntrega());
 
-        emprestimoRepository.save(emprestimoModificado);
 
-        return ResponseEntity.noContent().build();
+
+        emprestimoRepository.save(emprestimoObjeto);
+
+        return ResponseEntity.ok().body(emprestimoObjeto);
     }
 
     @PostMapping("/findByNome")
-    public ResponseEntity<Emprestimo> buscarEmprestimoPorIsbnLivro(@RequestBody EmprestimoDTO emprestimoDto) {
-        //Optional<Emprestimo> emprestimo = emprestimoRepository.consultarPorIsbnLivro(emprestimoDto.getIsbnLivro());
-        Emprestimo emprestimoBanco = emprestimoRepository.consultarPorIsbnLivro(emprestimoDto.getIsbnLivro());
-       // Emprestimo emprestimoObjeto = emprestimo.get();        
+    public ResponseEntity<Emprestimo> buscarEmprestimoPorIsbnLivro(@RequestBody EmprestimoDTO emprestimoDto) {        
+        Emprestimo emprestimoBanco = emprestimoRepository.consultarPorIsbnLivro(emprestimoDto.getIsbnLivro());             
         return ResponseEntity.ok().body(emprestimoBanco);
     }
 

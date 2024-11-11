@@ -1,7 +1,9 @@
 package com.eleodoro.biblioteca_eleodoro.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import com.eleodoro.biblioteca_eleodoro.dto.EmprestimoDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,69 +13,71 @@ import jakarta.persistence.Id;
 @Entity
 
 public class Emprestimo implements  Serializable {
-
+    
     private static final Long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int cgmAluno;
     private String isbnLivro;
-    private LocalDateTime dataEmprestimo;
-    private LocalDateTime dataEntrega;
-
+    private LocalDate dataEmprestimo;
+    private LocalDate dataEntrega;
+    
     public Emprestimo() {
     }
-
-    public Emprestimo(int cgmAluno, String isbnLivro, LocalDateTime dataEmprestimo, LocalDateTime dataEntrega) {
+    
+    public Emprestimo(int cgmAluno, String isbnLivro, LocalDate dataEmprestimo, LocalDate dataEntrega) {
         this.cgmAluno = cgmAluno;
         this.isbnLivro = isbnLivro;
         this.dataEmprestimo = dataEmprestimo;
         this.dataEntrega = dataEntrega;
     }
-
+    
     public static Long getSerialversionuid() {
         return serialVersionUID;
     }
-
+    
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public int getCgmAluno() {
         return cgmAluno;
     }
-
+    
     public void setCgmAluno(int cgmAluno) {
         this.cgmAluno = cgmAluno;
     }
-
+    
     public String getIsbnLivro() {
         return isbnLivro;
     }
-
+    
     public void setIsbnLivro(String isbnLivro) {
         this.isbnLivro = isbnLivro;
     }
-
-    public LocalDateTime getDataEmprestimo() {
+    
+    public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
-
-    public void setDataEmprestimo(LocalDateTime dataEmprestimo) {
+    
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
-
-    public LocalDateTime getDataEntrega() {
+    
+    public LocalDate getDataEntrega() {
         return dataEntrega;
     }
-    public void setDataEntrega(LocalDateTime dataEntrega) {
-        this.dataEntrega = dataEntrega;
+    
+    public void setDataEntrega(LocalDate emprestimoDto) {
+        this.dataEntrega = emprestimoDto;
     }
+    
     
     public void validarCgmAluno(){
 
@@ -127,16 +131,7 @@ public class Emprestimo implements  Serializable {
         } else if (!dataEntrega.equals(other.dataEntrega))
             return false;
         return true;
-    }
+    }    
 
-    public Object getNome() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNome'");
-    }
-
-    public void setNome(Object nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setNome'");
-    }
 }
 
